@@ -1,0 +1,21 @@
+
+
+
+{% extends "base.html" %}
+{% block main %}
+<h2>会員ページ</h2>
+<p>{{ user }}さん、こんにちは！</p>
+
+<p><a href="{% url 'logout' %}">ログアウト</a></p>
+<p><a href="{% url 'password_change' %}">パスワードの変更</a></p>
+<p><a href="{% url 'password_reset' %}">パスワードを忘れた場合</a></p>
+
+
+    <h1>DeleteView削除確認画面</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>{{ family.person }}を削除しますか？</p>
+        <input type="submit" value="削除する">
+    </form>
+
+{% endblock %}

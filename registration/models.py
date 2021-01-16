@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django import forms
 
 
 class User(AbstractUser):
@@ -7,7 +8,7 @@ class User(AbstractUser):
 
 
 class Family(models.Model):
-    family_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    family_user = models.ForeignKey('User', on_delete=models.CASCADE)
     person = models.CharField(verbose_name='利用者', max_length=255)
 
     def __str__(self):
@@ -15,7 +16,7 @@ class Family(models.Model):
 
 
 class Result(models.Model):
-    result_family = models.ForeignKey(Family, on_delete=models.CASCADE)
+    result_family = models.ForeignKey('Family', on_delete=models.CASCADE)
     temperature = models.FloatField(verbose_name='体温')
 
     def __str__(self):

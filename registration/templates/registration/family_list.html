@@ -1,0 +1,25 @@
+
+
+
+{% extends "base.html" %}
+{% block main %}
+<h2>会員ページ</h2>
+<p>{{ user }}さん、こんにちは！</p>
+
+<p><a href="{% url 'logout' %}">ログアウト</a></p>
+<p><a href="{% url 'password_change' %}">パスワードの変更</a></p>
+<p><a href="{% url 'password_reset' %}">パスワードを忘れた場合</a></p>
+
+
+
+{% for member in object_list %}
+    <tr>
+        <td>{{ member.person }}</td>
+        <th><a href="{% url 'person_detail' member.pk %}">詳細</a></th>
+        <th><a href="{% url 'person_update' member.pk %}">編集</a></th>
+        <th><a href="{% url 'person_delete' member.pk %}">削除</a></th>
+    </tr>
+{% endfor %}
+
+
+{% endblock %}
