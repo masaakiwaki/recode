@@ -18,6 +18,7 @@ class Family(models.Model):
 class Result(models.Model):
     result_family = models.ForeignKey('Family', on_delete=models.CASCADE)
     temperature = models.FloatField(verbose_name='体温')
+    create_at = models.DateTimeField(verbose_name='検温日', auto_now_add=True)
 
-    def __str__(self):
+    def __float__(self):
             return self.temperature
